@@ -1,0 +1,8 @@
+# yaml-rules.yml - custom yamllint rules - append with -c
+---
+extends: default
+
+rules:
+  line-length:
+    max: 999
+    level: warning

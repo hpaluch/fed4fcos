@@ -38,8 +38,47 @@ One-time setup on host:
   ./h-create-ssh-key.sh
   ```
 
+# Create FCOS VM
 
-TODO...
+Use following script to create VM named `fcos-01`:
+
+```shell
+./r-create-fcos-vm.sh fcos-01
+```
+
+WARNING! If you get error on `virbr0` - you have to wait several
+seconds until it is initialized (new LibVirt uses lazy initialization, which
+is a bit unreliable) - for example with command:
+
+```shell
+$ ip -br -4 a | grep virbr0
+
+virbr0           UP             192.168.122.1/24 
+```
+
+It must be `UP` and having assigned IP address as shown above. If not wait
+several seconds and repeat that command. And then repeat
+your command, for example:
+
+```shell
+./r-create-fcos-vm.sh fcos-01
+```
+
+Once FCOS installation is finished you will see `login:` prompt.
+
+Press `Ctrl`-`]` to exist serial console - this will finish `virt-install`
+command and returns to shell.
+
+To access this new Fedora Core OS image try:
+
+```shell
+ssh -i ~/.ssh/keys/id_ed25519_fcos core@fcos-01
+```
+
+You can use:
+- `sudo bash` to become root
+- `sudo poweroff` to shutdown VM
+
 
 # Resources
 

@@ -2,3 +2,7 @@
 *.swp
 *.bak
 *.tmp
+
+*.bu
+*.ign
+*.tar

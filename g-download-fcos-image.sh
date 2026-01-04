@@ -13,7 +13,14 @@ errx ()
 
 [[ $STREAM =~ ^(stable|testing|next)$ ]] || errx "Invalid STREAM='$STREAM' - must be stable, testing or next"
 set -x
-mkdir -p ~/.local/share/libvirt/images
+dt="$HOME/.local/share/libvirt/images"
+[ -d "$dt" ] || {
+	mkdir -p "$dt"
+	setfacl -m u:qemu:x $HOME/.local
+	setfacl -m u:qemu:x $HOME/.local/share
+	setfacl -m u:qemu:x $HOME/.local/share/libvirt
+	setfacl -m u:qemu:rwx $HOME/.local/share/libvirt/images
+}
 coreos-installer download -s $STREAM -p qemu -f qcow2.xz --decompress -C ~/.local/share/libvirt/images/
 # Note: above file will be used as "backing store" (golden image) - should be never modified!
 # Quick backup:
