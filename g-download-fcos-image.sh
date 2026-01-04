@@ -16,6 +16,7 @@ set -x
 dt="$HOME/.local/share/libvirt/images"
 [ -d "$dt" ] || {
 	mkdir -p "$dt"
+	setfacl -m u:qemu:x $HOME
 	setfacl -m u:qemu:x $HOME/.local
 	setfacl -m u:qemu:x $HOME/.local/share
 	setfacl -m u:qemu:x $HOME/.local/share/libvirt
