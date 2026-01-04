@@ -11,11 +11,17 @@ Requirements:
 One-time setup on host:
 - prepare LibVirt with:
 
-```shell
-./a-host-install-libvirt.sh
-# now restart OS if new packages were installed with: sudo reboot
-# continue with:
-./b-host-setup-libvirt-user.sh
-./c-host-setup-default-pool.sh
-```
+  ```shell
+  ./a-host-install-libvirt.sh
+  # now restart OS if new packages were installed with: sudo reboot
+  # continue with:
+  ./b-host-setup-libvirt-user.sh
+  ./c-host-setup-default-pool.sh
+  ```
+
+- on host install packages to support CoreOS management:
+
+  ```shell
+  ./f-host-install-fcos-pkgs.sh
+  ```
 
