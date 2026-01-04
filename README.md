@@ -25,3 +25,10 @@ One-time setup on host:
   ./f-host-install-fcos-pkgs.sh
   ```
 
+- generate SSH keypair that will be used to access target FCOS VMs:
+
+  ```shell
+  ./h-create-ssh-key.sh
+  ```
+
+TODO...
