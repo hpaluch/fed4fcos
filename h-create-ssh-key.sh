@@ -15,6 +15,8 @@ errx ()
 [  -r "$pk" -o -r "$pk.pub"  ] && errx "SSH private key file '$pk' already exists" || true
 set -x
 mkdir -p $(dirname "$pk")
+# tighten permissions, otherwise SSH may complain and avoid using keys in
+chmod 700 $(dirname "$pk")
 ssh-keygen -t ed25519 -f "$pk" -N ''
 set +x
 echo "Generated new SSH keypair:"
